@@ -1,5 +1,9 @@
 .button.faq__button {
-  background: url('https://cdn.prod.website-files.com/66d341e94043ca74b6b76681/66d59c8acacef18abbd1ac2d_arrow.svg')
-    no-repeat 10px center;
-  padding-left: 35px;
+  background-color: var(--color--accent);
+  background-image: url(https://cdn.prod.website-files.com/66d341e94043ca74b6b76681/66d59c8acacef18abbd1ac2d_arrow.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.button.faq__button:disabled {
+  background-image: none;
 }
