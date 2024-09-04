@@ -7,6 +7,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+roadmap();
+heading();
+cardAnimation();
+
 const showSite = () => {
   gsap.to('.main', { autoAlpha: 1, duration: 1.5, ease: 'power1.inOut' });
 };
@@ -16,8 +20,6 @@ function heading() {
   gsap.set(text.chars, { opacity: 0 });
   gsap.to(text.chars, { opacity: 1, duration: 3, ease: 'expo', stagger: 0.03, xPercent: 0 });
 }
-
-roadmap();
 
 function roadmap() {
   const square = gsap.utils.toArray('.square');
@@ -135,8 +137,6 @@ function roadmapItem() {
   });
 }
 
-cardAnimation();
-
 function cardAnimation() {
   const card = document.querySelectorAll('.features__card');
   const tl = gsap.timeline({
@@ -161,30 +161,3 @@ window.addEventListener('scroll', () => {
     mobBurger.classList.remove('scrolled');
   }
 });
-
-// function numberSquare(indeEl) {
-//   const square = document.querySelectorAll('.square');
-//   square.forEach((item) => {
-//     if (indeEl === item.dataset.number) {
-//       return item;
-//     }
-//   });
-// }
-
-// const roadmapLine = document.querySelectorAll('.line__green');
-// roadmapLine.forEach((item) => {
-//   const path = item.querySelector('path');
-//   const lenght = path.getTotalLength();
-//   gsap.set(path, { strokeDasharray: lenght });
-
-//   const roadmapTl = gsap.timeline({
-//     scrollTrigger: {
-//       trigger: item,
-//       start: 'top center',
-//       end: 'bottom top',
-//       scrub: 1,
-//     },
-//   });
-//   roadmapTl.to(line, { opacity: 1 });
-//   roadmapTl.fromTo(path, { strokeDashoffset: lenght }, { strokeDashoffset: 0 }, '<');
-// });
