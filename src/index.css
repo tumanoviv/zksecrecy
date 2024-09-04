@@ -26,4 +26,10 @@
     bottom: 0;
     width: 100%;
   }
+  .footer-video {
+    position: absolute;
+    right: 0;
+    top: 12.5rem;
+    width: 100%;
+  }
 }
