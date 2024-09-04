@@ -7,9 +7,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-roadmap();
 heading();
+roadmap();
 cardAnimation();
+roadmapMobile();
 
 const showSite = () => {
   gsap.to('.main', { autoAlpha: 1, duration: 1.5, ease: 'power1.inOut' });
@@ -26,6 +27,61 @@ function roadmap() {
   const block = document.querySelectorAll('[roadmap="item"]');
   const squareDur = 1;
   const lineGreen = document.querySelector('.line__green');
+
+  const columnCenter = document.querySelector('.roadmap__column--center');
+  gsap.set(block, { opacity: 0 });
+
+  const lenght = lineGreen.getTotalLength();
+  gsap.set(lineGreen, { strokeDasharray: lenght });
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: columnCenter,
+      start: 'top bottom-=10%',
+      end: 'bottom+=80% bottom',
+      scrub: 1,
+    },
+  });
+  tl.fromTo(lineGreen, { strokeDashoffset: lenght }, { strokeDashoffset: 0, duration: 10 });
+  tl.addLabel('start', 0);
+  tl.to(
+    square[0],
+    { scale: 2, color: '#C4FE48', transformOrigin: 'center center', duration: squareDur },
+    0
+  );
+
+  tl.to(
+    square[1],
+    { scale: 2, color: '#C4FE48', transformOrigin: 'center center', duration: squareDur },
+    '0.55'
+  );
+  tl.to(
+    square[2],
+    { scale: 2, color: '#C4FE48', transformOrigin: 'center center', duration: squareDur },
+    '1.7'
+  );
+  tl.to(
+    square[3],
+    { scale: 2, color: '#C4FE48', transformOrigin: 'center center', duration: squareDur },
+    '2.7'
+  );
+  tl.to(
+    square[4],
+    { scale: 2, color: '#C4FE48', transformOrigin: 'center center', duration: squareDur },
+    '3.8'
+  );
+  tl.to(
+    square[5],
+    { scale: 2, color: '#C4FE48', transformOrigin: 'center center', duration: squareDur },
+    '4.6'
+  );
+}
+
+function roadmapMobile() {
+  const square = gsap.utils.toArray('.square-mobile');
+  const block = document.querySelectorAll('[roadmap="item"]');
+  const squareDur = 1;
+  const lineGreen = document.querySelector('.line__green-mobile');
 
   const columnCenter = document.querySelector('.roadmap__column--center');
   gsap.set(block, { opacity: 0 });
@@ -80,6 +136,7 @@ function roadmap() {
     '4.6'
   );
 }
+
 function roadmapLine() {
   const square = gsap.utils.toArray('.square');
   // square.forEach((item, index) => {
